@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "lts/*"
+  - "node"
+cache: yarn
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+addons:
+  firefox: 'latest'
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+script:
+  - yarn build
+  - yarn test
+  - yarn coverage-publish

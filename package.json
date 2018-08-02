@@ -1,0 +1,40 @@
+{
+  "name": "chakra",
+  "version": "1.0.0",
+  "description": "Modular JavaScript framework for building decentralized apps",
+  "author": "Cubefuse",
+  "keywords": [
+    "Chakra",
+    "P2P",
+    "JavaScript"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "homepage": "http://cubefuse.org",
+  "repository": "github:cubefuse/chakra",
+  "bugs": "https://github.com/cubefuse/chakra/issues",
+  "scripts": {
+    "lint": "aegir lint",
+    "release": "aegir release",
+    "build": "aegir build",
+    "test": "aegir test",
+    "test:node": "aegir test --target node",
+    "test:browser": "aegir test --target browser",
+    "coverage": "aegir coverage",
+    "coverage-publish": "aegir coverage --upload",
+    "docs": "aegir docs",
+    "docs-publish": "aegir docs --upload"
+  },
+  "devDependencies": {
+    "aegir": "^15.0.0",
+    "chai": "^4.1.2",
+    "dirty-chai": "^2.0.1",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "standard": "^11.0.1"
+  }
+}
