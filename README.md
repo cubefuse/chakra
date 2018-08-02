@@ -29,7 +29,7 @@ yarn install
 Update the `package.json` file before starting.
 
 - The code can be built for both Node.js and the browser by `yarn build`.
-- To run the tests and generate coverage reports, use `yarn build` and `yarn coverage`.
+- To run the tests and generate coverage reports, use `yarn test` and `yarn coverage`.
 - Code linting with the JavaScript Standard Style is available with `yarn lint`.
 - Code documentation can be built with `yarn docs`.
 - Check the `scripts` section in `package.json` file for the more usage information.
