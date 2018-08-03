@@ -1,7 +1,6 @@
-import Subscription from './Subscription'
-
 const PubSub = require('pubsub-js')
 const TopicRegistry = require('./TopicRegistry')
+const Subscription = require('./Subscription')
 
 /**
  * Publish / Subscribe event bus

@@ -6,7 +6,7 @@ const Message = require('./Message')
 /**
  * Subscription for a topic
  */
-export default class Subscription {
+class Subscription {
   /**
    * Subscribe to a new topic
    * @param topic {Topic} Topic to subscribe to
@@ -37,3 +37,5 @@ export default class Subscription {
     this._emitter.emitEvent(message)
   }
 }
+
+module.exports = Subscription

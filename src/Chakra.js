@@ -5,12 +5,7 @@ const EventBus = require('./messaging/EventBus')
  */
 class Chakra {
   constructor () {
-    this.testString = 'Hello World'
     this.eventBus = new EventBus()
-  }
-
-  sayHello () {
-    return this.testString
   }
 }
 

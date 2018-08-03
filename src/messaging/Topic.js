@@ -5,9 +5,11 @@ class Topic {
   /**
    * Create a new topic
    * @param entity {string} Entity of the topic
-   * @param action {string} Action of the topic
+   * @param action {string?} Action of the topic
    */
   constructor (entity, action) {
+    if (!entity) throw new Error('Entity not specified')
+
     this.entity = entity
     this.action = action
   }
@@ -17,7 +19,7 @@ class Topic {
    * @returns {string} Name of the topic
    */
   getName () {
-    return this.entity + '.' + this.action
+    return (this.action) ? this.entity + '.' + this.action : this.entity
   }
 }
 

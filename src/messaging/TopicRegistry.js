@@ -8,18 +8,18 @@ class TopicRegistry {
    * Create new topic registry instance
    */
   constructor () {
-    this.schema = {}
+    this.schemas = {}
     this.validator = new Ajv()
   }
 
   /**
    * Add new topic to the registry
-   * @param topic {Topic} Topic to add to the registry
+   * @param topic {Topic} Topic to register with the registry
    * @param schema {Object} Schema for the topic
    */
-  add (topic, schema) {
-    if (!this.schema[topic.getName()]) {
-      this.schema[topic.getName()] = schema
+  register (topic, schema) {
+    if (!this.schemas[topic.getName()]) {
+      this.schemas[topic.getName()] = schema
     } else {
       throw new Error('Topic already exists.')
     }
@@ -30,7 +30,7 @@ class TopicRegistry {
    * @param topic {Topic} Topic to get schema for.
    */
   getSchema (topic) {
-    const schema = this.schema[topic.getName()]
+    const schema = this.schemas[topic.getName()]
     if (schema) {
       return schema
     } else {

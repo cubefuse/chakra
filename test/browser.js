@@ -19,15 +19,4 @@ describe('browser', () => {
   it('loads successfully', () => {
     expect(hello).to.exist()
   })
-
-  it('outputs default test string', () => {
-    expect(hello.sayHello()).to.be.eql('Hello World')
-  })
-
-  it('outputs default test string', () => {
-    const testString = 'Yet another test string'
-
-    hello.testString = testString
-    expect(hello.sayHello()).to.be.eql(testString)
-  })
 })
