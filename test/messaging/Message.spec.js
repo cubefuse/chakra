@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+'use strict'
 const Topic = require('../../src/messaging/Topic')
 const Message = require('../../src/messaging/Message')
 
@@ -10,7 +11,7 @@ chai.use(dirtyChai)
 describe('Message', () => {
   const ENTITY_NAME = 'TestEntity'
   const ACTION_NAME = 'TestAction'
-  const MESSAGE_CONTENT = { 'testKey': 'testValue' }
+  const MESSAGE_CONTENT = { testKey: 'testValue' }
 
   let message, topic
 

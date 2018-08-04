@@ -1,3 +1,4 @@
+'use strict'
 const Ajv = require('ajv')
 
 /**
@@ -16,6 +17,8 @@ class TopicRegistry {
    * Add new topic to the registry
    * @param {Topic} topic Topic to register with the registry
    * @param {Object} schema Schema for the topic
+   * @returns {undefined}
+   * @throws {Error} Will throw if topic is already registered
    */
   register (topic, schema) {
     if (!this.isRegistered(topic)) {
@@ -28,15 +31,16 @@ class TopicRegistry {
   /**
    * Check if a given topic is registered with the registry.
    * @param {Topic} topic Topic to verify registration
-   * @return {boolean} Whether the topic is already registered
+   * @returns {boolean} Whether the topic is already registered
    */
   isRegistered (topic) {
-    return !!this.schemas[topic.getName()]
+    return Boolean(this.schemas[topic.getName()])
   }
 
   /**
    * Get schema by topic name.
    * @param {Topic} topic Topic to get schema for.
+   * @returns {undefined}
    */
   getSchema (topic) {
     const schema = this.schemas[topic.getName()]
@@ -50,11 +54,11 @@ class TopicRegistry {
   /**
    * Validate a content against its schema
    * @param {Message} message Message to validate
-   * @return {boolean} Whether the message is valid
+   * @returns {boolean} Whether the message is valid
    */
   validate (message) {
     if (this.isRegistered(message.topic)) {
-      return this.validator.validate(this.getSchema(message.topic), message.content)
+      return Boolean(this.validator.validate(this.getSchema(message.topic), message.content))
     } else {
       return false
     }

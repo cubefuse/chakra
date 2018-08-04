@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+'use strict'
 const EventBus = require('../src/EventBus')
 
 const chai = require('chai')
@@ -12,18 +13,18 @@ describe('Event Bus', () => {
   const ENTITY_NAME = 'TestEntity'
   const ACTION_NAME = 'TestAction'
   const SCHEMA = {
-    '$id': 'http://example.com/example.json',
-    'type': 'object',
-    'definitions': {},
-    '$schema': 'http://json-schema.org/draft-07/schema#',
-    'properties': {
-      'type': {
-        '$id': '/properties/type',
-        'type': 'integer'
+    $id: 'http://example.com/example.json',
+    type: 'object',
+    definitions: {},
+    $schema: 'http://json-schema.org/draft-07/schema#',
+    properties: {
+      type: {
+        $id: '/properties/type',
+        type: 'integer'
       }
     }
   }
-  const MESSAGE = { 'data': { 'type': 1 } }
+  const MESSAGE = { data: { type: 1 } }
 
   let eventBus
 

@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+'use strict'
 const Topic = require('../../src/messaging/Topic')
 const Message = require('../../src/messaging/Message')
 const TopicRegistry = require('../../src/messaging/TopicRegistry')
@@ -12,19 +13,19 @@ describe('Topic Registry', () => {
   const ENTITY_NAME = 'TestEntity'
   const ACTION_NAME = 'TestAction'
   const SCHEMA = {
-    '$id': 'http://example.com/example.json',
-    'type': 'object',
-    'definitions': {},
-    '$schema': 'http://json-schema.org/draft-07/schema#',
-    'properties': {
-      'type': {
-        '$id': '/properties/type',
-        'type': 'integer'
+    $id: 'http://example.com/example.json',
+    type: 'object',
+    definitions: {},
+    $schema: 'http://json-schema.org/draft-07/schema#',
+    properties: {
+      type: {
+        $id: '/properties/type',
+        type: 'integer'
       }
     }
   }
-  const VALID_MESSAGE = { 'data': { 'type': 1 } }
-  const INVALID_MESSAGE = { 'type': 'test' }
+  const VALID_MESSAGE = { data: { type: 1 } }
+  const INVALID_MESSAGE = { type: 'test' }
 
   let topic, topicRegistry
 

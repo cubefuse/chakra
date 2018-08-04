@@ -1,3 +1,4 @@
+'use strict'
 /**
  * Topic of the event to publish
  */

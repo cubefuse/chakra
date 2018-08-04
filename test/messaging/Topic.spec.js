@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+'use strict'
 const Topic = require('../../src/messaging/Topic')
 
 const chai = require('chai')

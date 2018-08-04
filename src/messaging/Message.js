@@ -1,3 +1,4 @@
+'use strict'
 /**
  * Data to be published through the event bus
  */

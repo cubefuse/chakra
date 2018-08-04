@@ -1,3 +1,4 @@
+'use strict'
 const PubSub = require('pubsub-js')
 const Message = require('./messaging/Message')
 const Topic = require('./messaging/Topic')
@@ -20,6 +21,7 @@ class EventBus {
    * @param {String} entity Entity the new topic relates to
    * @param {String} action Action the new topic relates to
    * @param {Object} schema JSON Schema for the topic
+   * @returns {undefined}
    */
   register (entity, action, schema) {
     const newTopic = new Topic(entity, action)
@@ -31,7 +33,7 @@ class EventBus {
    * @param {String} entity Entity of the topic to subscribe to
    * @param {String} action Action of the topic to subscribe to.
    * @param {function} publishHandler Function to handle published data.
-   * @return { string } Subscription key for the subscription
+   * @returns { string } Subscription key for the subscription
    * @throws Will throw if the topic is not found.
    */
   subscribe (entity, action, publishHandler) {
@@ -46,6 +48,7 @@ class EventBus {
    * @param {String} entity Entity of the message topic
    * @param {String} action Action of the message topic
    * @param {Object} content Message to publish
+   * @returns {undefined}
    * @throws {Error} Will throw if the message is invalid against the schema
    */
   publish (entity, action, content) {
@@ -62,6 +65,7 @@ class EventBus {
   /**
    * Unsubscribe from a subscribed topic
    * @param {string} subscriptionKey Key that was returned when subscribing
+   * @returns {undefined}
    */
   unsubscribe (subscriptionKey) {
     this._pubsub.unsubscribe(subscriptionKey)
