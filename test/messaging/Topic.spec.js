@@ -19,20 +19,10 @@ describe('Topic', () => {
     done()
   })
 
-  it('can be created successfully with entity and action name', () => {
+  it('can be created successfully', () => {
     expect(topic).to.exist()
     expect(topic.entity).to.be.eql(ENTITY_NAME)
     expect(topic.action).to.be.eql(ACTION_NAME)
-  })
-
-  it('can be created successfully with only entity name', () => {
-    expect(topicWithoutAction).to.exist()
-    expect(topicWithoutAction.entity).to.be.eql(ENTITY_NAME)
-    expect(topicWithoutAction.action).to.be.undefined()
-  })
-
-  it('throws when creating without an entity name', () => {
-    expect(() => new Topic()).to.throw('Entity not specified')
   })
 
   it('outputs topic name correctly', () => {

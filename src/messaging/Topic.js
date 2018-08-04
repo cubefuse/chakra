@@ -4,12 +4,10 @@
 class Topic {
   /**
    * Create a new topic
-   * @param entity {string} Entity of the topic
-   * @param action {string?} Action of the topic
+   * @param {string} entity Entity of the topic
+   * @param {string} [action] Action of the topic.
    */
   constructor (entity, action) {
-    if (!entity) throw new Error('Entity not specified')
-
     this.entity = entity
     this.action = action
   }

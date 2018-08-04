@@ -8,7 +8,7 @@ const dirtyChai = require('dirty-chai')
 const expect = chai.expect
 chai.use(dirtyChai)
 
-describe('Topic', () => {
+describe('Topic Registry', () => {
   const ENTITY_NAME = 'TestEntity'
   const ACTION_NAME = 'TestAction'
   const SCHEMA = {
@@ -23,6 +23,8 @@ describe('Topic', () => {
       }
     }
   }
+  const VALID_MESSAGE = { 'data': { 'type': 1 } }
+  const INVALID_MESSAGE = { 'type': 'test' }
 
   let topic, topicRegistry
 
@@ -50,13 +52,27 @@ describe('Topic', () => {
     expect(topicRegistry.getSchema(topic)).to.be.eql(SCHEMA)
   })
 
+  it('throws if schema not found', () => {
+    const topicWithoutSchema = new Topic(ENTITY_NAME)
+    expect(() => topicRegistry.getSchema(topicWithoutSchema)).to.throw()
+  })
+
+  it('returns true for registered topic', () => {
+    expect(topicRegistry.isRegistered(topic)).to.be.eql(true)
+  })
+
+  it('returns false for unregistered topic', () => {
+    const topicWithoutSchema = new Topic(ENTITY_NAME)
+    expect(topicRegistry.isRegistered(topicWithoutSchema)).to.be.eql(false)
+  })
+
   it('validation returns true for valid message', () => {
-    const message = new Message(topic, { 'data': { 'type': 1 } })
+    const message = new Message(topic, VALID_MESSAGE)
     expect(topicRegistry.validate(message)).to.be.eql(true)
   })
 
   it('validation returns false for invalid message', () => {
-    const message = new Message(topic, { 'type': 'test' })
+    const message = new Message(topic, INVALID_MESSAGE)
     expect(topicRegistry.validate(message)).to.be.eql(false)
   })
 })

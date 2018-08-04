@@ -14,11 +14,11 @@ class TopicRegistry {
 
   /**
    * Add new topic to the registry
-   * @param topic {Topic} Topic to register with the registry
-   * @param schema {Object} Schema for the topic
+   * @param {Topic} topic Topic to register with the registry
+   * @param {Object} schema Schema for the topic
    */
   register (topic, schema) {
-    if (!this.schemas[topic.getName()]) {
+    if (!this.isRegistered(topic)) {
       this.schemas[topic.getName()] = schema
     } else {
       throw new Error('Topic already exists.')
@@ -26,8 +26,17 @@ class TopicRegistry {
   }
 
   /**
+   * Check if a given topic is registered with the registry.
+   * @param {Topic} topic Topic to verify registration
+   * @return {boolean} Whether the topic is already registered
+   */
+  isRegistered (topic) {
+    return !!this.schemas[topic.getName()]
+  }
+
+  /**
    * Get schema by topic name.
-   * @param topic {Topic} Topic to get schema for.
+   * @param {Topic} topic Topic to get schema for.
    */
   getSchema (topic) {
     const schema = this.schemas[topic.getName()]
@@ -40,11 +49,15 @@ class TopicRegistry {
 
   /**
    * Validate a content against its schema
-   * @param message {Message} Message to validate
-   * @return {boolean | PromiseLike<any>} Whether the message is valid
+   * @param {Message} message Message to validate
+   * @return {boolean} Whether the message is valid
    */
   validate (message) {
-    return this.validator.validate(this.getSchema(message.topic), message.content)
+    if (this.isRegistered(message.topic)) {
+      return this.validator.validate(this.getSchema(message.topic), message.content)
+    } else {
+      return false
+    }
   }
 }
 

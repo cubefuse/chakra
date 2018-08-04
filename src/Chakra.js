@@ -1,4 +1,4 @@
-const EventBus = require('./messaging/EventBus')
+const EventBus = require('./EventBus')
 
 /**
  * Creates a new Chakra instance

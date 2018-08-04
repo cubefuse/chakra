@@ -3,9 +3,9 @@
  */
 class Message {
   /**
-   * Create a new content
-   * @param topic {Topic} Topic of the content
-   * @param content {Object} Message content JSON
+   * Create a new message
+   * @param {Topic} topic Topic of the content
+   * @param {Object} content Message content JSON
    */
   constructor (topic, content) {
     this.topic = topic
