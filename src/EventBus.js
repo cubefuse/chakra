@@ -46,7 +46,7 @@ class EventBus {
    * @param {String} entity Entity of the message topic
    * @param {String} action Action of the message topic
    * @param {Object} content Message to publish
-   * @throws {Error} Message invalid error
+   * @throws {Error} Will throw if the message is invalid against the schema
    */
   publish (entity, action, content) {
     const topic = new Topic(entity, action)
@@ -57,6 +57,14 @@ class EventBus {
     } else {
       throw new Error('Message invalid')
     }
+  }
+
+  /**
+   * Unsubscribe from a subscribed topic
+   * @param {string} subscriptionKey Key that was returned when subscribing
+   */
+  unsubscribe (subscriptionKey) {
+    this._pubsub.unsubscribe(subscriptionKey)
   }
 }
 

@@ -52,6 +52,12 @@ describe('Event Bus', () => {
     expect(subscriptionKey).to.exist()
   })
 
+  it('can unsubscribe from a subscribed topic', () => {
+    eventBus.register(ENTITY_NAME, ACTION_NAME, SCHEMA)
+    const subscriptionKey = eventBus.subscribe(ENTITY_NAME, ACTION_NAME)
+    expect(() => eventBus.unsubscribe(subscriptionKey)).to.not.throw()
+  })
+
   it('successfully publishes a new message', () => {
     eventBus.register(ENTITY_NAME, ACTION_NAME, SCHEMA)
     const promise = new Promise(function (resolve) {
