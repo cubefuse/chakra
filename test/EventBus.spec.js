@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 'use strict'
-const EventBus = require('../src/EventBus')
+const EventBus = require('../src/messaging/EventBus')
 
 const chai = require('chai')
 const dirtyChai = require('dirty-chai')

@@ -9,7 +9,7 @@ class TopicRegistry {
    * Create new topic registry instance
    */
   constructor () {
-    this.schemas = {}
+    this.schemas = new Map()
     this.validator = new Ajv()
   }
 
@@ -21,8 +21,8 @@ class TopicRegistry {
    * @throws {Error} Will throw if topic is already registered
    */
   register (topic, schema) {
-    if (!this.isRegistered(topic)) {
-      this.schemas[topic.getName()] = schema
+    if (!this.schemas.has(topic.getName())) {
+      this.schemas.set(topic.getName(), schema)
     } else {
       throw new Error('Topic already exists.')
     }
@@ -34,7 +34,7 @@ class TopicRegistry {
    * @returns {boolean} Whether the topic is already registered
    */
   isRegistered (topic) {
-    return Boolean(this.schemas[topic.getName()])
+    return this.schemas.has(topic.getName())
   }
 
   /**
@@ -43,7 +43,7 @@ class TopicRegistry {
    * @returns {undefined}
    */
   getSchema (topic) {
-    const schema = this.schemas[topic.getName()]
+    const schema = this.schemas.get(topic.getName())
     if (schema) {
       return schema
     } else {

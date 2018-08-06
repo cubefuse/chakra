@@ -1,8 +1,8 @@
 'use strict'
 const PubSub = require('pubsub-js')
-const Message = require('./messaging/Message')
-const Topic = require('./messaging/Topic')
-const TopicRegistry = require('./messaging/TopicRegistry')
+const Message = require('./Message')
+const Topic = require('./Topic')
+const TopicRegistry = require('./TopicRegistry')
 
 /**
  * Publish-subscribe event-bus
@@ -53,6 +53,8 @@ class EventBus {
    */
   publish (entity, action, content) {
     const topic = new Topic(entity, action)
+    if (!this.registry.isRegistered(topic)) throw new Error('Topic not found')
+
     const message = new Message(topic, content)
     const isValid = this.registry.validate(message)
     if (isValid) {

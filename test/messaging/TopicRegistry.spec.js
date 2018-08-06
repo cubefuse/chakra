@@ -41,8 +41,8 @@ describe('Topic Registry', () => {
   })
 
   it('topics can be registered correctly', () => {
-    expect(topicRegistry.schemas[topic.getName()]).to.exist()
-    expect(topicRegistry.schemas[topic.getName()]).to.be.eql(SCHEMA)
+    expect(topicRegistry.schemas.get(topic.getName())).to.exist()
+    expect(topicRegistry.schemas.get(topic.getName())).to.be.eql(SCHEMA)
   })
 
   it('throws on existing topic', () => {
