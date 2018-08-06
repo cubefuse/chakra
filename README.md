@@ -26,7 +26,6 @@ git clone https://github.com/cubefuse/chakra.git
 cd chakra
 yarn install
 ``` 
-Update the `package.json` file before starting.
 
 - The code can be built for both Node.js and the browser by `yarn build`.
 - To run the tests and generate coverage reports, use `yarn test` and `yarn coverage`.
