@@ -17,6 +17,7 @@ class Chakra {
   /**
    * Register new plugins with Chakra
    * @param {...Plugin} plugins List of Plugin objects to register
+   * @returns {undefined}
    * @throws {Error} Will throw on plugin registration failure
    */
   plug (...plugins) {
@@ -39,6 +40,7 @@ class Chakra {
 
   /**
    * Start the Chakra application
+   * @returns {undefined}
    */
   start () {
     // Start all plugins

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 'use strict'
-const EventBus = require('../src/messaging/EventBus')
+const EventBus = require('../../src/messaging/EventBus')
 
 const chai = require('chai')
 const dirtyChai = require('dirty-chai')
@@ -59,7 +59,7 @@ describe('Event Bus', () => {
     expect(() => eventBus.unsubscribe(subscriptionKey)).to.not.throw()
   })
 
-  it('successfully publishes a new message', () => {
+  it('successfully publishes a new message', (done) => {
     eventBus.register(ENTITY_NAME, ACTION_NAME, SCHEMA)
     const promise = new Promise(function (resolve) {
       eventBus.subscribe(ENTITY_NAME, ACTION_NAME, (topicName, message) => {
@@ -67,7 +67,15 @@ describe('Event Bus', () => {
       })
     })
     eventBus.publish(ENTITY_NAME, ACTION_NAME, MESSAGE)
+    expect(promise).to.eventually.eql(MESSAGE).notify(done)
+  })
 
-    expect(promise).to.be.fulfilled()
+  it('throws when publishing to a topic that does not exist', () => {
+    expect(() => eventBus.publish(ENTITY_NAME, ACTION_NAME, MESSAGE)).to.throw('Topic not found')
+  })
+
+  it('throws when publishing a invalid message', () => {
+    eventBus.register(ENTITY_NAME, ACTION_NAME, SCHEMA)
+    expect(() => eventBus.publish(ENTITY_NAME, ACTION_NAME, null)).to.throw('Message invalid')
   })
 })

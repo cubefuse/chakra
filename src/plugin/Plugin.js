@@ -1,3 +1,4 @@
+'use strict'
 /**
  * Interface for Chakra Plugins
  * @interface
@@ -29,3 +30,5 @@ class Plugin {
    */
   handleMessage (subscription, message) {}
 }
+
+module.exports = Plugin

@@ -12,6 +12,7 @@ chai.use(dirtyChai)
 describe('Topic Registry', () => {
   const ENTITY_NAME = 'TestEntity'
   const ACTION_NAME = 'TestAction'
+  const ACTION_NAME_UNREGISTERED = 'UnregisteredTestAction'
   const SCHEMA = {
     $id: 'http://example.com/example.json',
     type: 'object',
@@ -74,6 +75,12 @@ describe('Topic Registry', () => {
 
   it('validation returns false for invalid message', () => {
     const message = new Message(topic, INVALID_MESSAGE)
+    expect(topicRegistry.validate(message)).to.be.eql(false)
+  })
+
+  it('validation returns false for message with unregistered topic', () => {
+    const topicUnregistered = new Topic(ENTITY_NAME, ACTION_NAME_UNREGISTERED)
+    const message = new Message(topicUnregistered, INVALID_MESSAGE)
     expect(topicRegistry.validate(message)).to.be.eql(false)
   })
 })

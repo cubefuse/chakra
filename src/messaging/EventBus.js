@@ -38,7 +38,9 @@ class EventBus {
    */
   subscribe (entity, action, publishHandler) {
     const topic = new Topic(entity, action)
-    if (!this.registry.isRegistered(topic)) throw new Error('Topic not found.')
+    if (!this.registry.isRegistered(topic)) {
+      throw new Error('Topic not found.')
+    }
 
     return this._pubsub.subscribe(topic.getName(), publishHandler)
   }
@@ -53,7 +55,9 @@ class EventBus {
    */
   publish (entity, action, content) {
     const topic = new Topic(entity, action)
-    if (!this.registry.isRegistered(topic)) throw new Error('Topic not found')
+    if (!this.registry.isRegistered(topic)) {
+      throw new Error('Topic not found')
+    }
 
     const message = new Message(topic, content)
     const isValid = this.registry.validate(message)
