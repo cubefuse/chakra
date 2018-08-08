@@ -42,7 +42,7 @@ jobs:
         - dist/index.min.js
         skip_cleanup: true
         on:
-          branch: release
+          branch: master
           tags: true
       - provider: pages
         skip-cleanup: true
@@ -50,12 +50,12 @@ jobs:
         local-dir: docs
         target-branch: gh-pages
         on:
-          branch: release
+          branch: master
           tags: true
       - provider: npm
         email: $NPM_EMAIL
         api_key: $NPM_TOKEN
         skip_cleanup: true
         on:
-          branch: release
+          branch: master
           tags: true
