@@ -1,7 +1,4 @@
 language: node_js
-node_js:
-  - "lts/*"
-  - "node"
 cache: yarn
 before_script:
   - export DISPLAY=:99.0
@@ -15,6 +12,7 @@ stages:
   - build
   - test
   - docs
+  - deploy
 script: skip
 jobs:
   include:
@@ -34,7 +32,6 @@ jobs:
   - script: yarn docs
     name: "API Docs"
   - stage: deploy
-    node_js: "node"
     script: skip
     deploy:
       - provider: releases
