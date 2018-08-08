@@ -1,10 +1,11 @@
-# Chakra.js
+# Chakra Framework
 
 [![A Cubefuse Project](https://img.shields.io/badge/a_project_by-cubefuse-blue.svg?style=for-the-badge)](http://cubefuse.org)
 [![Code Standard Style Compliant](https://img.shields.io/badge/code-standard-green.svg?style=for-the-badge)](https://github.com/standard/standard)
 [![Readme Standard Style Compliant](https://img.shields.io/badge/readme-standard-green.svg?style=for-the-badge)](https://github.com/RichardLitt/standard-readme)
 [![Travis CI](https://img.shields.io/travis/cubefuse/chakra.svg?style=for-the-badge)](https://travis-ci.org/cubefuse/chakra)
 [![Codecov](https://img.shields.io/codecov/c/github/cubefuse/chakra.svg?style=for-the-badge)](https://codecov.io/gh/cubefuse/chakra)
+[![npm](https://img.shields.io/npm/v/@chakrajs/framework.svg?style=for-the-badge)](https://www.npmjs.com/package/@chakrajs/framework)
 
 [![Documentation](https://img.shields.io/badge/Documentation-blue.svg?style=for-the-badge)](https://cubefuse.github.io/chakra-docs)
 [![API Reference](https://img.shields.io/badge/API-Reference-blue.svg?style=for-the-badge)](https://cubefuse.github.io/chakra)
