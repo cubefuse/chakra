@@ -16,15 +16,16 @@
   "scripts": {
     "lint": "aegir lint",
     "release": "aegir release",
+    "release:major": "aegir release --type major",
     "build": "aegir build",
     "test": "aegir test",
     "test:node": "aegir test --target node",
     "test:browser": "aegir test --target browser",
     "test:webworker": "aegir test --target webworker",
     "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage --upload",
+    "coverage:publish": "aegir coverage --upload",
     "docs": "aegir docs",
-    "docs-publish": "aegir docs --upload"
+    "docs:publish": "aegir docs --upload"
   },
   "devDependencies": {
     "aegir": "^15.0.0",

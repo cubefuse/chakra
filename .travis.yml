@@ -11,15 +11,18 @@ addons:
       - ubuntu-toolchain-r-test
 stages:
   - build
+  - lint
   - test
   - docs
-  - deploy
 script: skip
 jobs:
   include:
   - stage: build
-    name: "Build"
     script: yarn build
+    name: "Build"
+  - stage: lint
+    script: yarn lint
+    name: "Lint"
   - stage: test
     name: "Browser"
     script: yarn test:browser
@@ -32,30 +35,3 @@ jobs:
     script: yarn coverage-publish
   - script: yarn docs
     name: "API Docs"
-  - stage: deploy
-    script: skip
-    deploy:
-      - provider: releases
-        api_key: $GITHUB_TOKEN
-        file:
-        - dist/index.js
-        - dist/index.min.js
-        skip_cleanup: true
-        on:
-          branch: master
-          tags: true
-      - provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_TOKEN
-        local-dir: docs
-        target-branch: gh-pages
-        on:
-          branch: master
-          tags: true
-      - provider: npm
-        email: $NPM_EMAIL
-        api_key: $NPM_TOKEN
-        skip_cleanup: true
-        on:
-          branch: master
-          tags: true
