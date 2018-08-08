@@ -11,7 +11,43 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-script:
-  - yarn build
-  - yarn test
-  - yarn coverage-publish
+jobs:
+  include:
+  - stage: build
+    script: yarn build
+  - stage: test
+    name: "Browser"
+    script: yarn test:browser
+  - script: yarn test:node
+    name: "Node.js"
+  - script: yarn test:webworker
+    name: "Service Worker"
+  - stage: docs
+    name: "Coverage"
+    script: yarn coverage-publish
+  - script: yarn docs
+deploy:
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file:
+      - dist/index.js
+      - dist/index.min.js
+    skip_cleanup: true
+    on:
+      branch: release
+      tags: true
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    local-dir: docs
+    target-branch: gh-pages
+    on:
+      branch: release
+      tags: true
+  - provider: npm
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    skip_cleanup: true
+    on:
+      branch: release
+      tags: true
