@@ -15,9 +15,11 @@ stages:
   - build
   - test
   - docs
+script: skip
 jobs:
   include:
   - stage: build
+    name: "Build"
     script: yarn build
   - stage: test
     name: "Browser"
