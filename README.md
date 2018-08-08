@@ -6,18 +6,54 @@
 [![Travis CI](https://img.shields.io/travis/cubefuse/chakra.svg?style=for-the-badge)](https://travis-ci.org/cubefuse/chakra)
 [![Codecov](https://img.shields.io/codecov/c/github/cubefuse/chakra.svg?style=for-the-badge)](https://codecov.io/gh/cubefuse/chakra)
 
+[![Documentation](https://img.shields.io/badge/Documentation-blue.svg?style=for-the-badge)](https://cubefuse.github.io/chakra-docs)
+[![API Reference](https://img.shields.io/badge/API-Reference-blue.svg?style=for-the-badge)](https://cubefuse.github.io/chakra)
+
+
 >  Modular JavaScript framework for building decentralized apps
 
 ## Table of Contents
-- [Usage](#usage)
+- [Getting Started](#getting-started)
 - [Development Setup](#development-setup)
 - [Maintainers](#maintainers)
 - [Contribute](#contribute)
 - [License](#license)
 
-## Usage
+## Getting Started
 
-This project is under active development. We do not offer production builds yet.
+### npm package
+
+This is the recommended method for using Chakra.
+
+```sh
+npm install @chakrajs/framework
+```
+
+If you are using `yarn` (recommended), use this instead.
+
+```sh
+yarn add @chakrajs/framework
+```
+
+### `<script>` include
+Directly include with `<script>` tag on your html pages. This only works for web browsers.
+`Chakra` would be included as a global variable.
+
+- Download and use
+
+Downloads can be found in the [GitHub Releases](https://github.com/cubefuse/chakra/releases) page.
+
+- Use from CDN
+
+```html
+<!-- Development version -->
+<script src="https://unpkg.com/@chakrajs/framework/dist/index.js"></script>
+
+<!-- Minified version -->
+<script src="https://unpkg.com/@chakrajs/framework/dist/index.min.js"></script>
+```
+
+Please read the [Documentation](https://cubefuse.github.io/chakra-docs) and the [API Reference](https://cubefuse.github.io/chakra-docs) to start building Chakra Apps.
 
 ## Development Setup
 
@@ -31,7 +67,6 @@ yarn install
 - To run the tests and generate coverage reports, use `yarn test` and `yarn coverage`.
 - Code linting with the JavaScript Standard Style is available with `yarn lint`.
 - Code documentation can be built with `yarn docs`.
-- Check the `scripts` section in `package.json` file for the more usage information.
 
 ## Maintainers
 
