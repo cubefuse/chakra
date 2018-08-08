@@ -11,6 +11,10 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+stages:
+  - build
+  - test
+  - docs
 jobs:
   include:
   - stage: build
@@ -26,6 +30,7 @@ jobs:
     name: "Coverage"
     script: yarn coverage-publish
   - script: yarn docs
+    name: "API Docs"
 deploy:
   - provider: releases
     api_key: $GITHUB_TOKEN
