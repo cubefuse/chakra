@@ -32,6 +32,6 @@ jobs:
     name: "Service Worker"
   - stage: docs
     name: "Coverage"
-    script: yarn coverage-publish
+    script: yarn coverage:publish
   - script: yarn docs
     name: "API Docs"
