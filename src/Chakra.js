@@ -1,6 +1,7 @@
 'use strict'
 const EventBus = require('./messaging/EventBus')
-const Plugin = require('./plugin/Plugin')
+const Plugin = require('@chakrajs/plugin-interface')
+const ChakraStatusPlugin = require('./plugins/ChakraStatus')
 
 /**
  * Chakra main class
@@ -8,10 +9,18 @@ const Plugin = require('./plugin/Plugin')
 class Chakra {
   /**
    * Creates a new Chakra instance
+   * @param {Object} config Configuration of the Chakra instance
+   * @param {string} config.name Name of the Chakra app
+   * @param {string} config.version Version of the Chakra app
    */
-  constructor () {
+  constructor (config = {}) {
+    this.config = config
     this._eventBus = new EventBus()
     this._plugins = new Map()
+    this._internalPlugins = {
+      status: new ChakraStatusPlugin()
+    }
+    this.plug(this._internalPlugins.status)
   }
 
   /**
@@ -49,10 +58,13 @@ class Chakra {
       plugin.publish = (action, message) => this._eventBus.publish(plugin.name, action, message)
       plugin.start()
     }
+
+    // Publish Chakra.Started message
+    this._internalPlugins.status.publishStartedMessage({
+      name: this.config.name,
+      version: this.config.version
+    })
   }
 }
-
-// Export plugin interface for custom plugin implementations
-Chakra.Plugin = Plugin
 
 module.exports = Chakra

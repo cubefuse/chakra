@@ -1,0 +1,28 @@
+{
+  "$id": "chakra://chakra-status.plugin/started.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "appName": {
+      "$id": "/properties/appName",
+      "type": "string",
+      "title": "App Name",
+      "description": "Name of the Chakra app",
+      "default": "",
+      "examples": [
+        "TestApp"
+      ]
+    },
+    "version": {
+      "$id": "/properties/version",
+      "type": "string",
+      "title": "App Version",
+      "description": "Version of the Chakra App. Should follow Semantic Versioning 2.0.0 Spec.",
+      "default": "1.0.0",
+      "examples": [
+        "1.2.3"
+      ]
+    }
+  }
+}

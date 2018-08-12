@@ -1,8 +1,8 @@
 'use strict'
-const Chakra = require('../../src/Chakra')
+const Plugin = require('@chakrajs/plugin-interface')
 const mockSchema = require('./mockSchema.json')
 
-class MockPlugin extends Chakra.Plugin {
+class MockPlugin extends Plugin {
   constructor () {
     super()
     this.name = 'mock'

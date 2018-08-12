@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 'use strict'
-const Chakra = require('../src/Chakra')
+const Chakra = require('../src')
 const MockPlugin = require('./mocks/MockPlugin')
 
 const chai = require('chai')
@@ -25,15 +25,12 @@ describe('Chakra', () => {
     expect(chakra._plugins).to.exist()
   })
 
-  it('exports plugin interface', () => {
-    expect(Chakra.Plugin).to.exist()
-    expect(typeof Chakra.Plugin).to.eql('function')
-  })
-
   it('can add new plugins correctly', () => {
+    const prevPluginsCount = chakra._plugins.size
+    const prevSchemasCount = chakra._eventBus.registry.schemas.size
     expect(() => chakra.plug(plugin)).to.not.throw()
-    expect(chakra._eventBus.registry.schemas.size).to.eql(1)
-    expect(chakra._plugins.size).to.eql(1)
+    expect(chakra._eventBus.registry.schemas.size).to.eql(prevSchemasCount + 1)
+    expect(chakra._plugins.size).to.eql(prevPluginsCount + 1)
     expect(chakra._plugins.has(plugin.name)).to.eql(true)
   })
 

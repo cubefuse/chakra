@@ -54,7 +54,7 @@ Downloads can be found in the [GitHub Releases](https://github.com/cubefuse/chak
 <script src="https://unpkg.com/@chakrajs/framework/dist/index.min.js"></script>
 ```
 
-Please read the [Documentation](https://cubefuse.github.io/chakra-docs) and the [API Reference](https://cubefuse.github.io/chakra-docs) to start building Chakra Apps.
+Please read the [Documentation](https://cubefuse.github.io/chakra-docs) and the [API Reference](https://cubefuse.github.io/chakra) to start building Chakra Apps.
 
 ## Development Setup
 
