@@ -5,6 +5,7 @@
 [![Readme Standard Style Compliant](https://img.shields.io/badge/readme-standard-green.svg?style=for-the-badge)](https://github.com/RichardLitt/standard-readme)
 [![Travis CI](https://img.shields.io/travis/cubefuse/chakra.svg?style=for-the-badge)](https://travis-ci.org/cubefuse/chakra)
 [![Codecov](https://img.shields.io/codecov/c/github/cubefuse/chakra.svg?style=for-the-badge)](https://codecov.io/gh/cubefuse/chakra)
+[![Codacy Grade](https://img.shields.io/codacy/grade/0b9e0de4754b4f4e926a0f6ac187cfdb.svg?style=for-the-badge)](https://app.codacy.com/app/Cubefuse/chakra)
 [![npm](https://img.shields.io/npm/v/@chakrajs/framework.svg?style=for-the-badge)](https://www.npmjs.com/package/@chakrajs/framework)
 
 [![Documentation](https://img.shields.io/badge/Documentation-blue.svg?style=for-the-badge)](https://cubefuse.github.io/chakra-docs)
