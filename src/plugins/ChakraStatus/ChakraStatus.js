@@ -7,7 +7,6 @@ const STARTED = 'Started'
 /**
  * Chakra framework's built-in Status plugin
  */
-// eslint-disable-next-line no-unused-vars
 class ChakraStatus extends Plugin {
   /**
    * Create a new ChakraStatus plugin instance
